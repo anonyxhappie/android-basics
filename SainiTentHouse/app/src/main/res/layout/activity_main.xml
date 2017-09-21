@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dwarf.sainitenthouse.MainActivity">
+
+    <ImageView
+        android:alpha="0.40"
+        android:layout_weight="0"
+        android:src="@drawable/wedding"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tvBusinessName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:layout_above="@+id/tvCity"
+        android:layout_alignParentTop="true"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#1A237E"
+        android:textSize="50sp"
+        android:gravity="center"
+        android:text="Saini Tent House" />
+
+    <TextView
+        android:id="@+id/tvCity"
+        android:text="In Losal City"
+        android:layout_weight="0"
+        android:padding="30dp"
+        android:alpha="0.8"
+        android:background="#1A237E"
+        android:typeface="serif"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:gravity="left"
+        android:layout_above="@+id/tvServices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:src="@drawable/mapmarker"
+        android:layout_width="50dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="83dp"
+        android:id="@+id/imageView"
+        android:layout_above="@+id/tvServices"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/tvServices"
+        android:text="24x7 Services"
+        android:typeface="serif"
+        android:layout_weight="0"
+        android:alpha="0.8"
+        android:background="#7986CB"
+        android:textColor="#000"
+        android:gravity="right"
+        android:padding="30dp"
+        android:textSize="25sp"
+        android:layout_above="@+id/tvEnquiry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:src="@drawable/phoneclassic"
+        android:layout_width="50dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/tvCity"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="81dp" />
+
+
+    <TextView
+        android:id="@+id/tvEnquiry"
+        android:text="Call Us to Enquiry"
+        android:fontFamily="sans-serif-condensed"
+        android:textColor="#000"
+        android:padding="25dp"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/tvContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvContact"
+        android:text="+91-978-467-1000"
+        android:typeface="serif"
+        android:fontFamily="sans-serif-condensed"
+        android:padding="20dp"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

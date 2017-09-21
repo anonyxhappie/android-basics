@@ -1,0 +1,23 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Just Java</string>
+
+    <!-- activity_main.xml strings, [MAX_LENGTH=20] -->
+    <string name="et_name">Name</string>
+    <string name="toppings">Toppings</string>
+    <string name="whippedCream">Whipped Cream</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="quantity">Quantity</string>
+    <string name="order">Order</string>
+
+    <!-- MainActivity.java strings, [MAX_LENGTH=200] -->
+    <string name="toast_msg">Charges for Each Coffee are : $5\nWhipped Cream: $1, Chocolate: $2 :)</string>
+    <string name="mail_subject">JustJava Order for <xliff:g id="name" example="Akshay">%s</xliff:g></string>
+    <string name="order_summary_name">Name: <xliff:g id="name" example="Akshay">%s</xliff:g>\n</string>
+    <string name="order_summary_toppings">Toppings: Whipped Cream and Chocolate\n</string>
+    <string name="order_summary_chocolate">Toppings: Chocolate\n</string>
+    <string name="order_summary_whippedCream">Toppings: Whipped Cream\n</string>
+    <string name="order_summary_quantity">Quantity: </string>
+    <string name="order_summary_total">\nTotal: $</string>
+    <string name="order_summary_thankYou">\nThank You!</string>
+
+</resources>
