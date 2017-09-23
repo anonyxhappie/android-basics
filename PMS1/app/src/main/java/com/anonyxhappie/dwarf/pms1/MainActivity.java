@@ -2,6 +2,8 @@ package com.anonyxhappie.dwarf.pms1;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -31,9 +32,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        movieAsyncTask = new MovieAsyncTask(this);
-        movieAsyncTask.execute(IMDBURL+"popular"+API);
-
+        if(isNetworkAvailable()){
+            movieAsyncTask = new MovieAsyncTask(this);
+            movieAsyncTask.execute(IMDBURL+"popular"+API);
+        }else {
+            Toast.makeText(this, "Please Connect to Internet.", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -47,21 +51,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
-            case R.id.item1:
-                movieAsyncTask = new MovieAsyncTask(this);
-                movieAsyncTask.execute(IMDBURL+"popular"+API);
-                return true;
-            case R.id.item2:
-                movieAsyncTask = new MovieAsyncTask(this);
-                movieAsyncTask.execute(IMDBURL+"top_rated"+API);
-                return true;
-            case R.id.item3:
-                movieAsyncTask.updateUi(favouriteList);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if(isNetworkAvailable()){
+            switch (item.getItemId()){
+                case R.id.item1:
+                    movieAsyncTask = new MovieAsyncTask(this);
+                    movieAsyncTask.execute(IMDBURL+"popular"+API);
+                    return true;
+                case R.id.item2:
+                    movieAsyncTask = new MovieAsyncTask(this);
+                    movieAsyncTask.execute(IMDBURL+"top_rated"+API);
+                    return true;
+//            case R.id.item3:
+//                movieAsyncTask.updateUi(favouriteList);
+//                return true;
+                default:
+                    return super.onOptionsItemSelected(item);
+            }
+        }else {
+            Toast.makeText(this, "Please Connect to Internet.", Toast.LENGTH_SHORT).show();
         }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private boolean isNetworkAvailable(){
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo info = manager.getActiveNetworkInfo();
+        return info != null && info.isConnected();
     }
 
     public class MovieAsyncTask extends AsyncTask<String, Void, ArrayList<MovieModel>> {

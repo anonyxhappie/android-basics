@@ -1,9 +1,7 @@
 package com.anonyxhappie.dwarf.pms1;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -35,7 +33,7 @@ public class DetailsActivity extends AppCompatActivity {
         date.setText(movieModel.getRelease_date());
 
         final Button favourite = (Button) findViewById(R.id.favourite);
-        if (movieModel.isFavourite()==true){
+        if (movieModel.isFavourite()){
             favourite.setText("Remove From Favourites");
         }else{
             favourite.setText("Mark As Favourite");
