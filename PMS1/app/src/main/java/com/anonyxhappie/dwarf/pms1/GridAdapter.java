@@ -1,17 +1,14 @@
 package com.anonyxhappie.dwarf.pms1;
 
 import android.content.Context;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -38,8 +35,11 @@ public class GridAdapter extends ArrayAdapter<MovieModel> {
 
         ImageView imageView = (ImageView) v.findViewById(R.id.image);
 
+        RequestOptions options = new RequestOptions()
+                .centerCrop().placeholder(R.drawable.loading_spinner);
         Glide.with(getContext())
                 .load(Utils.generateImageUrl(movieModel.getPoster_path()))
+                .apply(options)
                 .into(imageView);
 
         return v;

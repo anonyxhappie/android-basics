@@ -5,29 +5,61 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridLayout;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String IMDBURL = "https://api.themoviedb.org/3/movie/popular?api_key="+ BuildConfig.THEMOVIEDB_ORG_API_KEY +"&language=en-US&page=1";
+    public static String FINALURL = "";
 
+    public static String IMDBURL = "https://api.themoviedb.org/3/movie/";
+
+    public static String API = "?api_key="+ BuildConfig.THEMOVIEDB_ORG_API_KEY +"&language=en-US&page=1";
+
+    MovieAsyncTask movieAsyncTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MovieAsyncTask movieAsyncTask = new MovieAsyncTask(this);
-        movieAsyncTask.execute(IMDBURL);
+        movieAsyncTask = new MovieAsyncTask(this);
+        movieAsyncTask.execute(IMDBURL+"popular"+API);
+
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.item1:
+                movieAsyncTask = new MovieAsyncTask(this);
+                movieAsyncTask.execute(IMDBURL+"popular"+API);
+                return true;
+            case R.id.item2:
+                movieAsyncTask = new MovieAsyncTask(this);
+                movieAsyncTask.execute(IMDBURL+"top_rated"+API);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     public class MovieAsyncTask extends AsyncTask<String, Void, ArrayList<MovieModel>> {
 
@@ -76,7 +108,5 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-
     }
-
 }
