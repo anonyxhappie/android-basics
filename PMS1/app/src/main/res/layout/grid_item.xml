@@ -3,6 +3,6 @@
     android:src="@mipmap/ic_launcher_round"
     android:id="@+id/image"
     android:scaleType="fitXY"
-    android:layout_width="260dp" android:layout_height="300dp">
+    android:layout_width="match_parent" android:layout_height="300dp">
 
 </ImageView>
