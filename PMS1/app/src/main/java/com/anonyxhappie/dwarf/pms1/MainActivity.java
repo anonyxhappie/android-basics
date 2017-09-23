@@ -18,11 +18,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String FINALURL = "";
-
     public static String IMDBURL = "https://api.themoviedb.org/3/movie/";
 
     public static String API = "?api_key="+ BuildConfig.THEMOVIEDB_ORG_API_KEY +"&language=en-US&page=1";
+
+    public static ArrayList<MovieModel> favouriteList = new ArrayList<>();
 
     MovieAsyncTask movieAsyncTask;
 
@@ -55,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.item2:
                 movieAsyncTask = new MovieAsyncTask(this);
                 movieAsyncTask.execute(IMDBURL+"top_rated"+API);
+                return true;
+            case R.id.item3:
+                movieAsyncTask.updateUi(favouriteList);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

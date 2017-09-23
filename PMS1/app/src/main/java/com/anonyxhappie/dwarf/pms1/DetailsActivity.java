@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,7 +18,7 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        MovieModel movieModel = getIntent().getParcelableExtra("i_key");
+        final MovieModel movieModel = getIntent().getParcelableExtra("i_key");
 
         TextView title = (TextView) findViewById(R.id.movie_title);
         title.setText(movieModel.getOriginal_title());
@@ -31,6 +33,28 @@ public class DetailsActivity extends AppCompatActivity {
         ratings.setText(String.valueOf(movieModel.getVote_average() ));
         TextView date = (TextView) findViewById(R.id.year);
         date.setText(movieModel.getRelease_date());
+
+        final Button favourite = (Button) findViewById(R.id.favourite);
+        if (movieModel.isFavourite()==true){
+            favourite.setText("Remove From Favourites");
+        }else{
+            favourite.setText("Mark As Favourite");
+        }
+
+        favourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (movieModel.isFavourite()==false){
+                    movieModel.setFavourite(true);
+                    MainActivity.favouriteList.add(movieModel);
+                    favourite.setText("Remove From Favourites");
+                }else{
+                    movieModel.setFavourite(false);
+                    MainActivity.favouriteList.remove(movieModel);
+                    favourite.setText("Mark As Favourite");
+                }
+            }
+        });
     }
 
 }
