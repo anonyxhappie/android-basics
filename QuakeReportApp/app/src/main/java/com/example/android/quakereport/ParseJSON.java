@@ -10,8 +10,6 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
-
 /**
  * Created by dwarf on 9/20/2017.
  */

@@ -14,7 +14,8 @@ public class EarthquakeDataModel {
 
     int magnitudeResourceId;
 
-    public EarthquakeDataModel(int magnitudeResourceId, String magnitude, String placeOffset, String place, String date, String time) {
+    public EarthquakeDataModel(int magnitudeResourceId, String magnitude, String placeOffset,
+                               String place, String date, String time) {
         this.magnitude = magnitude;
         this.place = place;
         this.placeOffset = placeOffset;
